@@ -89,11 +89,20 @@ def transform_data(
     """Map the API response to a simpler internal format."""
 
     current = data["current"]
+    temperature = current["temperature_2m"]
+
+    if temperature < 10:
+        temperature_category = "cold"
+    elif temperature < 20:
+        temperature_category = "mild"
+    else:
+        temperature_category = "warm"
 
     return {
         "city": city,
         "observation_time": current["time"],
-        "temperature_celsius": current["temperature_2m"],
+        "temperature_celsius": temperature,
+        "temperature_category": temperature_category,
         "humidity_percent": current["relative_humidity_2m"],
         "wind_speed_kmh": current["wind_speed_10m"],
         "processed_at": datetime.now().isoformat(timespec="seconds"),

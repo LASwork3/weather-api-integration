@@ -12,7 +12,7 @@ The project was created to practise REST APIs, data integration, error handling,
 
 ## Features
 
-- Retrieves weather data for Rotterdam and Utrecht
+- Retrieves weather data for Enschede and Rotterdam
 - Sends HTTP GET requests to a REST API
 - Processes JSON responses
 - Validates required data fields

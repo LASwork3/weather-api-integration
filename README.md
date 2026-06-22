@@ -1,36 +1,69 @@
 # Weather API Data Integration
 
-A Python integration project that retrieves current weather data from the Open-Meteo REST API, validates and transforms the JSON response, and saves the processed records as a CSV file.
+## About the project
 
-## Project purpose
+I built this project to gain practical experience with APIs and understand how data moves between separate systems.
 
-This project demonstrates a simple end-to-end system integration workflow:
+The Python script retrieves current weather data for Enschede and Rotterdam from the Open-Meteo REST API. It checks the returned JSON data, transforms it into a simpler structure and saves the processed records in a CSV file.
 
-Open-Meteo API → HTTP GET request → JSON validation → data mapping → data transformation → CSV output
+## What is an API?
 
-The project was created to practise REST APIs, data integration, error handling, logging and technical documentation.
+An API, or Application Programming Interface, allows separate software systems to exchange information through a defined set of requests and responses.
+
+In this project, the Python script sends an HTTP GET request to Open-Meteo. The API returns weather information in JSON format, which the script then processes.
+
+## Purpose
+
+The purpose of this project was to practise the main steps of a system integration:
+
+1. Connect to an external system through an API.
+2. Retrieve data through an HTTP request.
+3. Validate that the expected data is present.
+4. Map and transform the data into a clearer structure.
+5. Save the processed data in a local output file.
+6. Record successful actions and errors through logging.
+
+## Integration flow
+
+
+Open-Meteo API
+      ↓
+HTTP GET request
+      ↓
+JSON response
+      ↓
+Data validation
+      ↓
+Data mapping and transformation
+      ↓
+Temperature categorisation
+      ↓
+CSV output
+
 
 ## Features
 
-- Retrieves weather data for Enschede and Rotterdam
-- Sends HTTP GET requests to a REST API
-- Processes JSON responses
-- Validates required data fields
-- Maps external API fields to clearer internal field names
-- Transforms data into a simplified structure
-- Exports processed records to CSV
-- Handles timeouts, HTTP errors and invalid responses
-- Records successful actions and errors in a log file
+* Retrieves current weather data for Enschede and Rotterdam
+* Sends HTTP GET requests to a REST API
+* Processes JSON responses
+* Checks that required fields are present
+* Maps API field names to clearer internal names
+* Categorises temperatures as cold, mild or warm
+* Prints a weather summary in the terminal
+* Saves processed records as CSV
+* Handles request timeouts, connection failures and HTTP errors
+* Records activity and errors in a log file
 
 ## Technologies
 
-- Python
-- Requests
-- REST API
-- HTTP
-- JSON
-- CSV
-- Git
+* Python
+* Requests
+* REST API
+* HTTP
+* JSON
+* CSV
+* Git
+* GitHub
 
 ## Project structure
 
@@ -42,7 +75,7 @@ weather-api-integration/
 └── .gitignore
 ```
 
-Generated files such as `weather_data.csv` and `integration.log` are excluded from Git.
+The generated `weather_data.csv` and `integration.log` files are excluded from Git.
 
 ## Setup
 
@@ -51,7 +84,7 @@ These instructions are for someone running the project on a new computer.
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/LASwork3/weather-api-integration.git
 cd weather-api-integration
 ```
 
@@ -75,13 +108,11 @@ On Windows:
 .venv\Scripts\activate
 ```
 
-### 4. Install the required packages
+### 4. Install the dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
-
-Using a separate virtual environment keeps this project’s dependencies isolated from other Python projects. :contentReference[oaicite:1]{index=1}
 
 ### 5. Run the integration
 
@@ -91,51 +122,40 @@ python main.py
 
 ## Output
 
-After running the program, it creates:
+The script creates a CSV file containing:
 
-- `weather_data.csv` — transformed weather records
-- `integration.log` — execution information and error messages
+* City
+* Observation time
+* Temperature in degrees Celsius
+* Temperature category
+* Humidity percentage
+* Wind speed in kilometres per hour
+* Processing time
 
-Example CSV fields:
-
-```text
-city
-observation_time
-temperature_celsius
-humidity_percent
-wind_speed_kmh
-processed_at
-```
-
-## Integration process
-
-1. The program sends an HTTP GET request to the Open-Meteo API.
-2. The API returns current weather information in JSON format.
-3. The program checks that all required fields are present.
-4. The API fields are mapped to clearer internal field names.
-5. The transformed records are saved as CSV.
-6. Successful actions and errors are written to a log file.
-
-## Error handling
-
-The project handles:
-
-- Request timeouts
-- HTTP errors
-- Connection failures
-- Missing JSON fields
-- Invalid data structures
-- Empty output records
+It also creates an `integration.log` file containing successful operations and error messages.
 
 ## What I learned
 
-Through this project, I practised:
+Through this project, I gained practical experience with:
 
-- Working with REST APIs
-- Processing JSON data
-- Data validation
-- Data mapping and transformation
-- Building an integration workflow
-- Logging and error handling
-- Managing Python dependencies
-- Using Git and GitHub
+* Sending requests to a REST API
+* Understanding JSON responses
+* Validating incoming data
+* Mapping and transforming data
+* Applying simple business rules
+* Handling API and connection errors
+* Writing logs
+* Managing Python dependencies
+* Using Git and GitHub
+
+I also learned that an integration needs to account for failures and unexpected data, rather than only working when every request succeeds.
+
+## Possible next steps
+
+Future improvements could include:
+
+* Saving records in a SQLite database
+* Preventing duplicate records
+* Moving locations into a configuration file
+* Adding automated tests
+* Scheduling the script to run automatically

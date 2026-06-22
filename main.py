@@ -11,14 +11,15 @@ OUTPUT_FILE = "weather_data.csv"
 
 LOCATIONS = [
     {
+        "city": "Enschede",
+        "latitude": 52.2215,
+        "longitude": 6.8937,
+    },
+    {
+       
         "city": "Rotterdam",
         "latitude": 51.9225,
         "longitude": 4.4792,
-    },
-    {
-        "city": "Utrecht",
-        "latitude": 52.0907,
-        "longitude": 5.1214,
     },
 ]
 

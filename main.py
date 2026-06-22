@@ -147,6 +147,13 @@ def run_integration() -> None:
 
             transformed_records.append(transformed_record)
 
+            print(
+                f'{transformed_record["city"]}: '
+                f'{transformed_record["temperature_celsius"]} °C '
+                f'({transformed_record["temperature_category"]})'
+            )
+
+           
             logging.info(
                 "Successfully processed weather for %s",
                 location["city"],

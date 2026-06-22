@@ -9,6 +9,8 @@ import requests
 API_URL = "https://api.open-meteo.com/v1/forecast"
 OUTPUT_FILE = "weather_data.csv"
 
+# Weather locations used in this integration.
+
 LOCATIONS = [
     {
         "city": "Enschede",
